@@ -36,24 +36,37 @@ sListType insertBeginSList(sListType sList,listElementType newElement){
         perror("Memory Not Allocated");
         exit(1);
     }
+    return sList;
 }   
 sListType insertEndinSList(sListType sList,listElementType newElement){
     nodePtrType newnode,temp;
     newnode=(nodePtrType)malloc(sizeof(nodeType));
+    newnode->info = newElement;
+    newnode->next = NULL;
+
+    if(sList==NULL){
+        return newnode;    
+    }
     temp=sList;
-    while (temp)
+    while (temp->next)
     {   
         temp=temp->next;
     }
-    if(!(temp)){
-        newnode=temp;
-        temp=newnode;
-    }
-    
-    
+    temp->next=newnode; 
+    return sList;
 }
 sListType insertPosInSList(sListType sList,listElementType newElement,int pos){
 
+    nodePtrType newnode,temp;
+    newnode=(nodePtrType)malloc(sizeof(nodeType));
+    newnode->info=newElement;
+    temp=sList;
+    for(int i=0;i<pos;i++){
+        temp=temp->next;
+    }
+    newnode=temp;
+    temp=newnode;
+    return sList;    
 }
 void displayList(sListType sList){
     if(sList){
@@ -71,8 +84,16 @@ void displayList(sListType sList){
     
 }
 listElementType retrieve_ithElement_sList(sListType sList,int pos){
-
+    nodePtrType temp;
+    temp=sList;
+    for(int i=0;i<pos;i++){
+        temp=temp->next;
+    }
+    return temp->info;
 }
-sListType deleteBeginSList(sListType){
-
+sListType deleteBeginSList(sListType sList){
+    nodePtrType temp;
+    temp=sList;
+    sList=sList->next;
+    free(temp);
 }  

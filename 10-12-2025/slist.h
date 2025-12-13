@@ -1,5 +1,6 @@
 #ifndef SLIST_H
 #define SLIST_H
+
 typedef int listElementType;
 typedef struct node{
     listElementType info;
