@@ -56,16 +56,29 @@ sListType insertEndinSList(sListType sList,listElementType newElement){
     return sList;
 }
 sListType insertPosInSList(sListType sList,listElementType newElement,int pos){
-
+    if(pos==0) return insertBeginSList(sList,newElement);
+    
+    
     nodePtrType newnode,temp;
     newnode=(nodePtrType)malloc(sizeof(nodeType));
-    newnode->info=newElement;
-    temp=sList;
-    for(int i=0;i<pos;i++){
-        temp=temp->next;
+    if(!newnode) {
+        perror("Malloc Failed for NewNode"); 
+        exit(1);
     }
-    newnode=temp;
-    temp=newnode;
+        newnode->info=newElement;
+    temp=sList;
+    
+    
+    for(int i=0;i < pos-1 && temp!=NULL;i++){
+        temp=temp->next;
+   
+    if(temp == NULL) {
+        printf("Error: Position out of bounds\n");
+        free(newnode);
+        return sList;
+    }
+    newnode->next= temp->next;
+    temp->next=newnode;
     return sList;    
 }
 void displayList(sListType sList){
@@ -79,21 +92,23 @@ void displayList(sListType sList){
         
     }
     else{
-        perror("sList Points to NULL");
+        printf("List is Empty");
     }
     
 }
 listElementType retrieve_ithElement_sList(sListType sList,int pos){
     nodePtrType temp;
     temp=sList;
-    for(int i=0;i<pos;i++){
+    for(int i=0;i<pos-1 && temp!=NULL;i++){
         temp=temp->next;
     }
     return temp->info;
 }
 sListType deleteBeginSList(sListType sList){
+    if (sList==NULL) return NULL;
     nodePtrType temp;
     temp=sList;
     sList=sList->next;
     free(temp);
+    return sList;
 }  
