@@ -99,7 +99,7 @@ void displayList(sListType sList){
 listElementType retrieve_ithElement_sList(sListType sList,int pos){
     nodePtrType temp;
     temp=sList;
-    for(int i=0;i<pos-1 && temp!=NULL;i++){
+    for(int i=0;i<pos && temp!=NULL;i++){
         temp=temp->next;
     }
     return temp->info;
