@@ -9,7 +9,7 @@ void printMenu() {
     printf("3. Insert at Position\n");
     printf("4. Delete from Beginning\n");
     printf("5. Delete from End\n");       
-    printf("6. Delete from Position\n");  
+    printf("6. Delete from Position\n");
     printf("7. Retrieve Element\n");
     printf("8. Display List\n");
     printf("0. Exit\n");
@@ -40,7 +40,7 @@ int main() {
             case 2: // Insert End
                 printf("Enter integer to insert: ");
                 scanf("%d", &value);
-                myList = insertEndinSList(myList, value);
+                myList = insertEndSList(myList, value);
                 printf("Inserted %d at end.\n", value);
                 break;
 

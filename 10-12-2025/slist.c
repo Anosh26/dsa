@@ -38,9 +38,13 @@ sListType insertBeginSList(sListType sList,listElementType newElement){
     }
     return sList;
 }   
-sListType insertEndinSList(sListType sList,listElementType newElement){
+sListType insertEndSList(sListType sList,listElementType newElement){
     nodePtrType newnode,temp;
     newnode=(nodePtrType)malloc(sizeof(nodeType));
+    if(!newnode){
+        perror("Malloc Failed");
+        exit(1);
+    }   
     newnode->info = newElement;
     newnode->next = NULL;
 
