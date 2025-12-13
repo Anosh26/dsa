@@ -1,0 +1,4 @@
+*.zip
+*.exe
+./10-12-2025/test.c
+.vscode/
