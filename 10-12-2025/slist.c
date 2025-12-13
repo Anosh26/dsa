@@ -86,13 +86,14 @@ void displayList(sListType sList){
       nodePtrType nodeptr =sList;
       while (nodeptr)
       {
-        printf("%d",nodeptr->info);
+        printf("%d->",nodeptr->info);
         nodeptr=nodeptr->next;
       }
+      printf("NULL\n");
         
     }
     else{
-        printf("sList Points to NULL");
+        printf("sList Points to NULL\n");
     }
     
 }
@@ -101,6 +102,10 @@ listElementType retrieve_ithElement_sList(sListType sList,int pos){
     temp=sList;
     for(int i=0;i<pos && temp!=NULL;i++){
         temp=temp->next;
+    }
+    if(temp==NULL){
+        printf("Error: Position out of Bounds\n");
+        return -1;
     }
     return temp->info;
 }
