@@ -143,5 +143,25 @@ sListType deleteEndSList(sListType sList){
 }
 
 sListType deletePosinSList(sListType sList,int pos){
-    
+    if(!sList) return NULL;
+
+    if(pos==0){
+        return deleteBeginSList(sList);
+    }
+    nodePtrType temp;
+    temp=sList;
+    for(int i=0;i < pos-1 && temp;i++ ){
+        temp=temp->next;
+    }
+
+    if(!temp || !temp->next){
+        printf("Position out of Bounds\n");
+        return sList;
+    }
+    nodePtrType nodeToDelete;
+    nodeToDelete=temp->next;
+    temp->next=temp->next->next;
+    free(nodeToDelete);
+    return sList;
+
 }
