@@ -71,7 +71,7 @@ sListType insertPosInSList(sListType sList,listElementType newElement,int pos){
     
     for(int i=0;i < pos-1 && temp!=NULL;i++){
         temp=temp->next;
-   
+    }
     if(temp == NULL) {
         printf("Error: Position out of bounds\n");
         free(newnode);
@@ -92,7 +92,7 @@ void displayList(sListType sList){
         
     }
     else{
-        printf("List is Empty");
+        printf("sList Points to NULL");
     }
     
 }
