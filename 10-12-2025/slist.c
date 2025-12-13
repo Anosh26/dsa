@@ -55,6 +55,8 @@ sListType insertEndinSList(sListType sList,listElementType newElement){
     temp->next=newnode; 
     return sList;
 }
+
+
 sListType insertPosInSList(sListType sList,listElementType newElement,int pos){
     if(pos==0) return insertBeginSList(sList,newElement);
     
@@ -69,7 +71,7 @@ sListType insertPosInSList(sListType sList,listElementType newElement,int pos){
     temp=sList;
     
     
-    for(int i=0;i < pos-1 && temp!=NULL;i++){
+    for(int i=0;i < pos-1 && temp;i++){
         temp=temp->next;
     }
     if(temp == NULL) {
@@ -81,6 +83,8 @@ sListType insertPosInSList(sListType sList,listElementType newElement,int pos){
     temp->next=newnode;
     return sList;    
 }
+
+
 void displayList(sListType sList){
     if(sList){
       nodePtrType nodeptr =sList;
@@ -97,23 +101,47 @@ void displayList(sListType sList){
     }
     
 }
+
 listElementType retrieve_ithElement_sList(sListType sList,int pos){
     nodePtrType temp;
     temp=sList;
-    for(int i=0;i<pos && temp!=NULL;i++){
+    for(int i=0;i<pos && temp;i++){
         temp=temp->next;
     }
-    if(temp==NULL){
+    if(!temp){
         printf("Error: Position out of Bounds\n");
         return -1;
     }
     return temp->info;
 }
+
 sListType deleteBeginSList(sListType sList){
-    if (sList==NULL) return NULL;
+    if (!sList) return NULL;
     nodePtrType temp;
     temp=sList;
     sList=sList->next;
     free(temp);
     return sList;
 }  
+
+sListType deleteEndSList(sListType sList){
+    if(!sList) return NULL;
+
+    if(!sList->next){
+        free(sList);
+        return NULL;
+    }
+    nodePtrType temp;
+    temp=sList;
+    while(temp->next->next){
+        temp=temp->next;
+    }
+    free(temp->next);
+    temp->next=NULL;
+
+    return sList;
+}
+
+sListType deletePosinSList(sListType sList,int pos){
+    
+}

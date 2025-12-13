@@ -16,7 +16,10 @@ sListType insertEndSList(sListType sList,listElementType newElement);
 sListType insertPosInSList(sListType sList,listElementType newElement,int pos);
 void displayList(sListType sList);
 listElementType retrieve_ithElement_sList(sListType sList,int pos);
-sListType deleteBeginSList(sListType);  
+sListType deleteBeginSList(sListType sList);
+sListType deleteEndSList(sListType sList);
+sListType deletePosinSList(sListType sList,int pos);
 
-#endif
+
+#endif 
 
